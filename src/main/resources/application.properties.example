@@ -3,10 +3,10 @@ spring.application.name=gestion-academica
 #URL de conexión (le agregué "jdbc:" al principio)
 spring.datasource.url=jdbc:postgresql://aws-1-sa-east-1.pooler.supabase.com:6543/postgres?prepareThreshold=0
 #El usuario siempre es postgres
-spring.datasource.username=postgres.rcpvbouoyizmszibmoka
+spring.datasource.username=postgres.[usuario pulento]
 
 #AQUÍ va la contraseña del supabase
-spring.datasource.password=thisisaburnerpass01.
+spring.datasource.password=[contra pulenta jiji]
 
 #Configuraciones para que Spring hable bien con PostgreSQL y Supabase
 spring.jpa.hibernate.ddl-auto=update
