@@ -1,33 +1,27 @@
-package cl.colegio.ohiggins.gestion_academica.entity;
+package cl.colegio.ohiggins.gestion_academica.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "asignaturas")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Asignatura {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AsignaturaDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @NotBlank(message = "El nombre de la asignatura no puede estar vacío")
-    @Column(nullable = false)
     private String nombre;
 
     @Min(value = 1, message = "El código debe ser mayor a 0")
-    @Column(unique = true, nullable = false)
     private Integer codigo;
 
     @Min(value = 1, message = "Los créditos deben ser mayores a 0")
-    @Column(nullable = false)
     private Integer creditos;
 }

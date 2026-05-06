@@ -1,6 +1,6 @@
-package cl.colegio.ohiggins.gestion_academica.entity;
+package cl.colegio.ohiggins.gestion_academica.dto;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
@@ -11,31 +11,24 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "evaluaciones")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Evaluacion {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EvaluacionDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @NotNull(message = "El ID del alumno no puede ser nulo")
-    @Column(name = "alumno_id", nullable = false)
     private Long alumnoId;
 
     @NotNull(message = "El ID de la asignatura no puede ser nulo")
-    @Column(name = "asignatura_id", nullable = false)
     private Long asignaturaId;
 
     @NotNull(message = "La calificación no puede ser nula")
     @DecimalMin(value = "1.0", message = "La calificación mínima es 1.0")
     @DecimalMax(value = "7.0", message = "La calificación máxima es 7.0")
-    @Column(nullable = false)
     private Double calificacion;
 
-    @Column(nullable = false)
     private LocalDate fecha;
 }
