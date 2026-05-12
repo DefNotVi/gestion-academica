@@ -10,6 +10,8 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 
 @Data
@@ -29,19 +31,16 @@ public class Evaluacion {
   private Long id;
 
 
-
-  @ManyToOne(fetch = FetchType.LAZY)
-
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "alumno_id", nullable = false)
-
   private Alumno alumno;
 
 
 
-  @ManyToOne(fetch = FetchType.LAZY)
-
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "asignatura_id", nullable = false)
-
   private Asignatura asignatura;
 
 
